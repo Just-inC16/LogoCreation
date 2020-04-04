@@ -37,7 +37,7 @@ class ViewLogoScreen extends Component {
                         <div className="container">
                             <div className="panel panel-default">
                                 <div className="panel-heading">
-                                    <h4><Link to="/">Home</Link></h4>
+                                    <h4><Link to="/">GoLogoLo Home</Link></h4>
                                     <h3 className="panel-title">
                                         View Logo
                                     </h3>
@@ -46,10 +46,22 @@ class ViewLogoScreen extends Component {
                                     <dl>
                                         <dt>Text:</dt>
                                         <dd>{data.logo.text}</dd>
-                                        <dt>Color:</dt>
-                                        <dd>{data.logo.color}</dd>
                                         <dt>Font Size:</dt>
                                         <dd>{data.logo.fontSize}</dd>
+                                        <dt>Text Color:</dt>
+                                        <dd>{data.logo.color}</dd>
+                                        <dt>Background Color:</dt>
+                                        <dd>{data.logo.backgroundColor}</dd>
+                                        <dt>Border Color:</dt>
+                                        <dd>{data.logo.borderColor}</dd>
+                                        <dt>Border Radius:</dt>
+                                        <dd>{data.logo.borderRadius}</dd>
+                                        <dt>Border Thickness:</dt>
+                                        <dd>{data.logo.borderThickness}</dd>
+                                        <dt>Padding:</dt>
+                                        <dd>{data.logo.padding}</dd>
+                                        <dt>Marigin:</dt>
+                                        <dd>{data.logo.marigin}</dd>
                                         <dt>Last Updated:</dt>
                                         <dd>{data.logo.lastUpdate}</dd>
                                     </dl>

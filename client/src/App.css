@@ -17,6 +17,10 @@ body {
   background-color: var(--swatch-foundation);
   font-family: 'Lexend Exa';
 }
+home_logo_link {
+  color: var(--swatch-boundary);
+  text-decoration: none;
+}
 
 #home_banner_container {
   background-image: linear-gradient(to bottom,         
@@ -30,4 +34,32 @@ body {
   padding-left: 10%;
   padding-top: 5%;
   padding-bottom: 5%;
+  
+}
+#add_logo_button{
+  font-family: 'Lexend Exa';
+  font-size: 32pt;
+}
+#center_home_screen{
+  background-color: var(--swatch-primary);
+  display: grid;
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+  padding: 5px 10px 5px 10px;
+}
+#recent_work_header{
+  font-size: 24pt;
+  font-weight: bold;
+}
+
+#home_recent_work_container{
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 2;
+}
+#root_div{
+  position: absolute;
+  width: 80%;
+  left: 10%;
+  height: 90%;
+  top: 5%;
 }
