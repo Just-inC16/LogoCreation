@@ -120,25 +120,26 @@ class EditLogoScreen extends Component {
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="borderRadius">Border Radius:</label>
-                                                    <input type="number" className="form-control" name="borderRadius" ref={node => {
+                                                    <input type="text" className="form-control" name="borderRadius" ref={node => {
                                                         borderRadius = node;
-                                                    }} placeholder="Border Radius" defaultValue={data.logo.borderRadius}/>
+                                                    }} placeholder="Border Radius" defaultValue={data.logo.borderRadius} />
                                                 </div>
+                                                
                                                 <div className="form-group">
                                                     <label htmlFor="borderThickness">Border Thickness:</label>
-                                                    <input type="number" className="form-control" name="borderThickness" ref={node => {
+                                                    <input type="text" className="form-control" name="borderThickness" ref={node => {
                                                         borderThickness = node;
                                                     }} placeholder="Border Thickness" defaultValue={data.logo.borderThickness}/>
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="padding">Padding:</label>
-                                                    <input type="number" className="form-control" name="padding" ref={node => {
+                                                    <input type="text" className="form-control" name="padding" ref={node => {
                                                         padding = node;
                                                     }} placeholder="Padding" defaultValue={data.logo.padding}/>
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="margin">Margin:</label>
-                                                    <input type="number" className="form-control" name="margin" ref={node => {
+                                                    <input type="text" className="form-control" name="margin" ref={node => {
                                                         margin = node;
                                                     }} placeholder="Margin" defaultValue={data.logo.margin}/>
                                                 </div> 

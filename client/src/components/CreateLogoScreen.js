@@ -30,7 +30,7 @@ const ADD_LOGO = gql`
         }
     }
 `;
-//$backgroundColor:String!;    backgroundColor: $backgroundColor
+
 class CreateLogoScreen extends Component {
 
     render() {
