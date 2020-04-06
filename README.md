@@ -1,4 +1,224 @@
 # Example Queries 
+##GET A LOGO
+{
+  logo(id:"5e8a98c44be3da58c8ddef94") {
+    _id
+    text
+    color
+    fontSize
+    backgroundColor
+    borderColor
+    borderRadius
+    borderThickness
+    padding
+    margin
+  }
+}
+
+##GET ALL LOGOS
+{
+  logos {
+      _id
+      text
+      color
+      fontSize
+      backgroundColor
+      borderColor
+      borderRadius
+      borderThickness
+      padding
+      margin
+  }
+}
+
+## ADD LOGO
+mutation {
+  addLogo (
+    text: "Facebook",
+    color: "#80ff00",
+    fontSize: 44,
+    backgroundColor:"#ffff00",
+    borderColor:"#ff8040",
+    borderRadius:17,
+    borderThickness:16,
+    padding:15,
+    margin:12,
+  ) {
+    lastUpdate
+  }
+}
+mutation {
+  addLogo (
+    text: "Amazon",
+    color: "#ff0000",
+    fontSize: 60,
+    backgroundColor:"#ff8000",
+    borderColor:"#008000",
+    borderRadius:60,
+    borderThickness:30,
+    padding:10,
+    margin:50,
+  ) {
+    lastUpdate
+  }
+}
+mutation {
+  addLogo (
+    text: "Google",
+    color: "#00ffff",
+    fontSize: 144,
+    backgroundColor:"#008080",
+    borderColor:"#f3ff33",
+    borderRadius:0,
+    borderThickness:10,
+    padding:20,
+    margin:40,
+  ) {
+    lastUpdate
+  }
+}
+mutation {
+  addLogo (
+    text: "Boeing",
+    color: "#3364ff",
+    fontSize: 120,
+    backgroundColor:"#e033ff",
+    borderColor:"#ff336e",
+    borderRadius:130,
+    borderThickness:50,
+    padding:60,
+    margin:100,
+  ) {
+    lastUpdate
+  }
+}
+mutation {
+  addLogo (
+    text: "Delta Airlines",
+    color: "#46ff33",
+    fontSize: 90,
+    backgroundColor:"#33ffda",
+    borderColor:"#af33ff",
+    borderRadius:50,
+    borderThickness:130,
+    padding:0,
+    margin:1,
+  ) {
+    lastUpdate
+  }
+}
+## UPDATE LOGO
+mutation {
+  updateLogo (
+    id: "5e8a98c44be3da58c8ddef94",
+    text: "iBIO",
+    color: "#f3ff33",
+    fontSize: 160,
+    backgroundColor:"#33ff5b",
+    borderColor:"#f633ff",
+    borderRadius:144,
+    borderThickness:144,
+    padding: 144,
+    margin:144
+  ) {
+    lastUpdate
+  }
+}
+
+mutation {
+  updateLogo (
+    id: "5e8a995d4be3da58c8ddef95",
+    text: "Youtube",
+    color: "#a833ff",
+    fontSize: 60,
+    backgroundColor:"#71ff33",
+    borderColor:"#00ffff",
+    borderRadius:62,
+    borderThickness:52,
+    padding: 12,
+    margin:120
+  ) {
+    lastUpdate
+  }
+}
+
+mutation {
+  updateLogo (
+    id: "5e8a9a344be3da58c8ddef96",
+    text: "IBM",
+    color: "#ff0000",
+    fontSize: 60,
+    backgroundColor:"#ff8000",
+    borderColor:"#00ff00",
+    borderRadius:6,
+    borderThickness:5,
+    padding: 1,
+    margin:100
+  ) {
+    lastUpdate
+  }
+}
+
+mutation {
+  updateLogo (
+    id: "5e8a9a7c4be3da58c8ddef97",
+    text: "Donut Store",
+    color: "#3349ff",
+    fontSize: 20,
+    backgroundColor:"#ff7d33",
+    borderColor:"#ff3333",
+    borderRadius:60,
+    borderThickness:45,
+    padding: 17,
+    margin:0
+  ) {
+    lastUpdate
+  }
+}
+
+mutation {
+  updateLogo (
+    id: "5e8a9ade4be3da58c8ddef98",
+    text: "Cruise Line",
+    color: "#3364ff",
+    fontSize: 120,
+    backgroundColor:"#e033ff",
+    borderColor:"#ff336e",
+    borderRadius:130,
+    borderThickness:90,
+    padding: 34,
+    margin:10
+  ) {
+    lastUpdate
+  }
+}
+
+## REMOVE LOGO
+mutation {
+  removeLogo (id: "5e8a98c44be3da58c8ddef94") {
+    _id
+  }
+}
+mutation {
+  removeLogo (id: "5e8a995d4be3da58c8ddef95") {
+    _id
+  }
+}
+mutation {
+  removeLogo (id: "5e8a9a344be3da58c8ddef96") {
+    _id
+  }
+}
+mutation {
+  removeLogo (id: "5e8a9a7c4be3da58c8ddef97") {
+    _id
+  }
+}
+mutation {
+  removeLogo (text: "5e8a9ade4be3da58c8ddef98") {
+    _id
+  }
+}
 
 
 

@@ -62,7 +62,7 @@ class CreateLogoScreen extends Component {
                                 </h3>
                             </div>
                             
-                            <div className="row">
+                            <div id ="align_view_logo" className="row">
                                 <div className="panel-body">
                                     <form onSubmit={e => {
                                         e.preventDefault();
