@@ -51,59 +51,135 @@ const UPDATE_LOGO = gql`
 `;
 
 class EditLogoScreen extends Component {
-    // constructor(props) {
-    //     this.state = {
-    //         idPersonal:  props.match.params.id 
-    // //         // defaultText:data.logo.text,
-    // //         // textColor : data.logo.textColor,
-    // //         // fontSize : data.logo.fontSize,
-    // //         // backgroundColor: data.logo.backgroundColor,
-    // //         // boderStyle:"solid",
-    // //         // borderColor:data.logo.borderColor,
-    // //         // borderRadius: data.logo.borderRadius,
-    // //         // borderThickness: data.logo.borderThickness,
-    // //         // padding: data.logo.padding,
-    // //         // margin:data.logo.margin,
-    // //         //isInvalidName:false
-    //     }
-    // }
-    handleTextChange = (event) => {
+    constructor(props) {
+        super(props);
+        this.state = {
+            text: null,
+            color: null,
+            fontSize: null,
+            backgroundColor: null,
+            borderColor: null,
+            borderRadius: null,
+            borderThickness: null,
+            padding: null,
+            margin: null,
+            isInvalidName: false
+        }
+    }
+     handleTextChange = (event) => {
         console.log("handleTextChange to " + event.target.value); 
-        this.setState({ text: event.target.value});
-        // if(event.target.value<=0){
-        //     console.log("The string entered is less than normal. ");
-        //     this.setState({isInvalidName:true});
-        // }
-        // else
-        //     this.setState({isInvalidName:false});
+        this.setState({ text: event.target.value},function(){
+            console.log("The update text is " +this.state.text);
+            
+        });
+        if(event.target.value<=0){
+            console.log("The string entered is less than normal. ");
+            this.setState({isInvalidName:true});
+        }
+        else
+            this.setState({isInvalidName:false});
+    };
+    //Text Color
+    handleTextColorChange = (event) => {
+        console.log("handleTextColorChange to " + event.target.value);
+        this.setState({ color: event.target.value },function(){
+            console.log("The update text is " +this.state.color);
+            
+        });
     }
-     //Background Color
-     handleBackGroundColorChange = (event) => {
+    //Font Size
+    handleFontSizeChange = (event) => {
+        console.log("handleSizeChangeComplete to " + event.target.value);
+        this.setState({ fontSize: event.target.value },function(){
+            console.log("The update text is " +this.state.fontSize);
+            
+        });
+    }
+    //Background Color
+    handleBackGroundColorChange = (event) => {
         console.log("handleBackGroundColorChange to " + event.target.value);
-        this.setState({ backgroundColor: event.target.value });
+        this.setState({ backgroundColor: event.target.value },function(){
+            console.log("The update text is " +this.state.backgroundColor);
+            
+        });
     }
-  
+    //Border Color
+    handleBorderColorChange = (event) => {
+        console.log("handleBorderColorChange to " + event.target.value);
+        this.setState({ borderColor: event.target.value },function(){
+            console.log("The update text is " +this.state.borderColor);
+            
+        });
+    }
+    //Border Radius
+    handleBorderRadiusChange = (event) => {
+        console.log("handleBorderRadiusChangeComplete to " + event.target.value);
+        this.setState({ borderRadius: event.target.value },function(){
+            console.log("The update text is " +this.state.borderRadius);
+            
+        });
+    }
+    //Border Thickness
+    handleBorderThicknessChange = (event) => {
+        console.log("handleBorderThicknessChangeComplete to " + event.target.value);
+        this.setState({ borderThickness: event.target.value },function(){
+            console.log("The update text is " +this.state.borderThickness);
+            
+        });
+    }
+    //Padding
+    handlePaddingChange = (event) => {
+        console.log("handlePaddingChangeComplete to " + event.target.value);
+        this.setState({ padding: event.target.value },function(){
+            console.log("The update text is " +this.state.padding);
+            
+        });
+    }
+    //Margin
+    handleMarginChange = (event) => {
+        console.log("handleMarginChangeComplete to " + event.target.value);
+        this.setState({ margin: event.target.value },function(){
+            console.log("The update text is " +this.state.margin);
+        });
+    }
     render() {
         let text, color, fontSize,backgroundColor, borderColor,borderRadius,borderThickness,padding,margin;
         return (
             <Query query={GET_LOGO} variables={{ logoId: this.props.match.params.id }}>
                 {({ loading, error, data }) => {
-                   // this.state={text: data.logo.text};
+                   
                     if (loading) return 'Loading...';
                     if (error) return `Error! ${error.message}`;
+                    if(this.state.text ==null&& this.state.color ==null &&this.state.fontSize ==null&&
+                        this.state.backgroundColor ==null&&this.state.borderColor ==null&&this.state.borderRadius ==null&&
+                        this.state.borderThickness ==null&&this.state.padding ==null&&this.state.margin ==null)
+                    {
+                        this.setState({
+                                text: data.logo.text, 
+                                color:data.logo.color,
+                                fontSize:data.logo.fontSize,
+                                backgroundColor:data.logo.backgroundColor,
+                                borderColor:data.logo.borderColor,
+                                borderRadius:data.logo.borderRadius,
+                                borderThickness:data.logo.borderThickness,
+                                padding:data.logo.padding,
+                                margin:data.logo.margin,
+                            })
+                    }
+                        
+                    
                     const styles = {
                         container: {
                             borderStyle: "solid",
-                            text: data.logo.text,
-                            color: data.logo.color,
-                            fontSize: data.logo.fontSize + "pt",
-                            backgroundColor:data.logo.backgroundColor,
-                            borderColor:data.logo.borderColor,
-                            borderRadius :data.logo.borderRadius+"pt",
-                            borderWidth:data.logo.borderThickness+"pt",
-                            padding:data.logo.padding+"pt",
-                            margin:data.logo.margin+"pt",
-                            
+                            text: this.state.text,
+                            color: this.state.color,
+                            fontSize: this.state.fontSize + "pt",
+                            backgroundColor:this.state.backgroundColor,
+                            borderColor:this.state.borderColor,
+                            borderRadius :this.state.borderRadius+"pt",
+                            borderWidth:this.state.borderThickness+"pt",
+                            padding:this.state.padding+"pt",
+                            margin:this.state.margin+"pt",
                             whiteSpace: "pre-wrap",
                             maxWidth: "100%",
                             minWidth: "min-content",
@@ -112,7 +188,7 @@ class EditLogoScreen extends Component {
                     }
                     return (
                         <Mutation mutation={UPDATE_LOGO} key={data.logo._id} onCompleted={() => this.props.history.push(`/`)}>
-                            {(updateLogo, { loading, error, charDisplay }) => (
+                            {(updateLogo, { loading, error }) => (
                                 <div className="container">
                                     <div className="panel panel-default">
                                         <div className="panel-heading">
@@ -125,80 +201,79 @@ class EditLogoScreen extends Component {
                                             <div className="panel-body">                                            
                                                 <form onSubmit={e => {
                                                     e.preventDefault();
-                                                    if(text.value.trim().length===0){
-                                                        // {this.state.isInvalidName ? <span  className="red-text">Logo text must be non-empty!</span> : null}
-                                                        
-                                                    }
-                                                        
-                                                    else{
+                                                    if(text.value.trim().length!=0){
+                                                                                                                 
                                                         updateLogo({ variables: { id: data.logo._id, text: text.value, color: color.value, fontSize: parseInt(fontSize.value), backgroundColor: backgroundColor.value,
                                                                 borderColor: borderColor.value,borderRadius: parseInt(borderRadius.value),borderThickness: parseInt(borderThickness.value),padding: parseInt(padding.value),
                                                                 margin: parseInt(margin.value) } });
-                                                    text.value = "";
-                                                    color.value = "";
-                                                    fontSize.value = "";
-                                                    backgroundColor.value="";
-                                                    borderColor.value="";
-                                                    borderRadius.value="";
-                                                    borderThickness.value="";
-                                                    padding.value="";
-                                                    margin.value="";}
+                                                        text.value = "";
+                                                        color.value = "";
+                                                        fontSize.value = "";
+                                                        backgroundColor.value="";
+                                                        borderColor.value="";
+                                                        borderRadius.value="";
+                                                        borderThickness.value="";
+                                                        padding.value="";
+                                                        margin.value="";
+                                                    }
                                                 }}>
 
                                             
                                                     <div className="form-group">
                                                         <label htmlFor="text">Text:</label>
-                                                        <input type="text"  required="required" className="form-control" onChange={this.handleTextChange}name="text" ref={node => {
+                                                        <input type="text"  required="required" className="form-control" onChange={this.handleTextChange} name="text" ref={node => {
                                                             text = node;
                                                         }} placeholder="Text" defaultValue={data.logo.text} />
                                                     </div>
+                                                    {this.state.isInvalidName ? <span  className="red-text">**Logo text must be non-empty!**</span> : null}
+                                                    
                                                     <div className="form-group">
                                                         <label htmlFor="fontSize">Font Size:</label>
-                                                        <input type="number"min= "2" max= "144" className="form-control" name="fontSize" ref={node => {
+                                                        <input type="number"min= "2" max= "144" className="form-control"onChange={this.handleFontSizeChange} name="fontSize" ref={node => {
                                                             fontSize = node;
                                                         }} placeholder="Font Size" defaultValue={data.logo.fontSize} />
                                                     </div>
                                                     <div className="form-group">
                                                         <label htmlFor="color">Color:</label>
-                                                        <input type="color" className="form-control" name="color" ref={node => {
+                                                        <input type="color" className="form-control" onChange={this.handleTextColorChange}name="color" ref={node => {
                                                             color = node;
                                                         }} placeholder="Color" defaultValue={data.logo.color} />
                                                     </div>
                                                     
                                                     <div className="form-group">
                                                         <label htmlFor="backgroundColor">Background Color:</label>
-                                                        <input type="color" className="form-control"onChange={this.handleBackGroundColorChange}  name="backgroundColor" ref={node => {
+                                                        <input type="color" className="form-control" onChange={this.handleBackGroundColorChange}  name="backgroundColor" ref={node => {
                                                             backgroundColor = node;
                                                         }} placeholder="Background Color" defaultValue={data.logo.backgroundColor} />
                                                     </div>
                                                     <div className="form-group">
                                                         <label htmlFor="borderColor">Border Color:</label>
-                                                        <input type="color" className="form-control" name="borderColor" ref={node => {
+                                                        <input type="color" className="form-control" onChange={this.handleBorderColorChange} name="borderColor" ref={node => {
                                                             borderColor = node;
                                                         }} placeholder="Border Color"  defaultValue={data.logo.borderColor}/>
                                                     </div>
                                                     <div className="form-group">
                                                         <label htmlFor="borderRadius">Border Radius:</label>
-                                                        <input type="number"min= "0" max= "144" className="form-control" name="borderRadius" ref={node => {
+                                                        <input type="number"min= "0" max= "144" className="form-control" onChange={this.handleBorderRadiusChange} name="borderRadius" ref={node => {
                                                             borderRadius = node;
                                                         }} placeholder="Border Radius" defaultValue={data.logo.borderRadius} />
                                                     </div>
                                                     
                                                     <div className="form-group">
                                                         <label htmlFor="borderThickness">Border Thickness:</label>
-                                                        <input type="number"min= "0" max= "144" className="form-control" name="borderThickness" ref={node => {
+                                                        <input type="number"min= "0" max= "144" className="form-control" onChange={this.handleBorderThicknessChange}name="borderThickness" ref={node => {
                                                             borderThickness = node;
                                                         }} placeholder="Border Thickness" defaultValue={data.logo.borderThickness}/>
                                                     </div>
                                                     <div className="form-group">
                                                         <label htmlFor="padding">Padding:</label>
-                                                        <input type="number" min= "0" max= "144"className="form-control" name="padding" ref={node => {
+                                                        <input type="number" min= "0" max= "144"className="form-control" onChange={this.handlePaddingChange}name="padding" ref={node => {
                                                             padding = node;
                                                         }} placeholder="Padding" defaultValue={data.logo.padding}/>
                                                     </div>
                                                     <div className="form-group">
                                                         <label htmlFor="margin">Margin:</label>
-                                                        <input type="number"min= "0" max= "144" className="form-control" name="margin" ref={node => {
+                                                        <input type="number"min= "0" max= "144" className="form-control"onChange={this.handleMarginChange} name="margin" ref={node => {
                                                             margin = node;
                                                         }} placeholder="Margin" defaultValue={data.logo.margin}/>
                                                     </div> 
