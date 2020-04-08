@@ -1,5 +1,5 @@
 # Example Queries 
-##GET A LOGO
+## GET A LOGO
 {
   logo(id:"5e8a98c44be3da58c8ddef94") {
     _id
@@ -15,7 +15,7 @@
   }
 }
 
-##GET ALL LOGOS
+## GET ALL LOGOS
 {
   logos {
       _id
