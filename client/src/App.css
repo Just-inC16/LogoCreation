@@ -67,3 +67,6 @@ home_logo_link {
 #align_view_logo{
   margin-left: 0px;
 }
+#space_between{
+  white-space:pre;
+}

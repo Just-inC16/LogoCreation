@@ -51,7 +51,44 @@ const UPDATE_LOGO = gql`
 `;
 
 class EditLogoScreen extends Component {
+    // constructor() {
+    //     this.state = {
+    //         text: data.logo.text,
+    //         defaultText:data.logo.text,
+    //         textColor : data.logo.textColor,
+    //         fontSize : data.logo.fontSize,
+    //         backgroundColor: data.logo.backgroundColor,
+    //         boderStyle:"solid",
+    //         borderColor:data.logo.borderColor,
+    //         borderRadius: data.logo.borderRadius,
+    //         borderThickness: data.logo.borderThickness,
+    //         padding: data.logo.padding,
+    //         margin:data.logo.margin,
+    //     }
+    // }
+     //Background Color
+     handleBackGroundColorChange = (event) => {
+        console.log("handleBackGroundColorChange to " + event.target.value);
+        this.setState({ backgroundColor: event.target.value });
+    }
+    // componentDidUpdate=(prevProps)=>{
+    //     if(this.props.logo!==prevProps.logo){
+    //         this.setState({
+    //             text: this.props.logo.text,
+    //             defaultText:this.props.logo.text,
+    //             textColor : this.props.logo.textColor,
+    //             fontSize : this.props.logo.fontSize,
+    //             backgroundColor: this.props.logo.backgroundColor,
+    //             boderStyle:"solid",
+    //             borderColor:this.props.logo.borderColor,
+    //             borderRadius: this.props.logo.borderRadius,
+    //             borderThickness: this.props.logo.borderThickness,
+    //             padding: this.props.logo.padding,
+    //             margin:this.props.logo.margin,
 
+    //         });
+    //     }
+    // }
     render() {
         let text, color, fontSize,backgroundColor, borderColor,borderRadius,borderThickness,padding,margin;
         return (
@@ -71,12 +108,15 @@ class EditLogoScreen extends Component {
                             borderWidth:data.logo.borderThickness+"pt",
                             padding:data.logo.padding+"pt",
                             margin:data.logo.margin+"pt",
-                            position:"absolute"
+                            position:"absolute",
+                            whiteSpace: "pre",
+                            minWidth:"maxContent",
                         }
+            
                     }
                     return (
                         <Mutation mutation={UPDATE_LOGO} key={data.logo._id} onCompleted={() => this.props.history.push(`/`)}>
-                            {(updateLogo, { loading, error }) => (
+                            {(updateLogo, { loading, error, charDisplay }) => (
                                 <div className="container">
                                     <div className="panel panel-default">
                                         <div className="panel-heading">
@@ -84,28 +124,35 @@ class EditLogoScreen extends Component {
                                             <h3 className="panel-title">
                                                 Edit Logo
                                             </h3>
-                                    </div> 
-                                         <div id ="align_view_logo" className="panel-heading, row">
+                                        </div> 
+                                        <div id ="align_view_logo" className="panel-heading, row">
                                             <div className="panel-body">                                            
                                                 <form onSubmit={e => {
                                                     e.preventDefault();
-                                                    updateLogo({ variables: { id: data.logo._id, text: text.value, color: color.value, fontSize: parseInt(fontSize.value), backgroundColor: backgroundColor.value,
+                                                    if(text.value.trim().length===0){
+                                                        console.log("Execute charDisplay");
+                                                        
+                                                    }
+                                                        
+                                                    else{
+                                                        updateLogo({ variables: { id: data.logo._id, text: text.value, color: color.value, fontSize: parseInt(fontSize.value), backgroundColor: backgroundColor.value,
                                                                 borderColor: borderColor.value,borderRadius: parseInt(borderRadius.value),borderThickness: parseInt(borderThickness.value),padding: parseInt(padding.value),
                                                                 margin: parseInt(margin.value) } });
                                                     text.value = "";
                                                     color.value = "";
                                                     fontSize.value = "";
-                                                    backgroundColor.value = "";
-                                                    borderColor.value = "";
-                                                    borderRadius.value = "";
-                                                    borderThickness.value = "";
-                                                    padding.value = "";
-                                                    margin.value = "";
+                                                    backgroundColor.value="";
+                                                    borderColor.value="";
+                                                    borderRadius.value="";
+                                                    borderThickness.value="";
+                                                    padding.value="";
+                                                    margin.value="";}
                                                 }}>
+
                                             
                                                     <div className="form-group">
                                                         <label htmlFor="text">Text:</label>
-                                                        <input type="text" className="form-control" name="text" ref={node => {
+                                                        <input type="text"  required="required" className="form-control"  name="text" ref={node => {
                                                             text = node;
                                                         }} placeholder="Text" defaultValue={data.logo.text} />
                                                     </div>
@@ -124,7 +171,7 @@ class EditLogoScreen extends Component {
                                                     
                                                     <div className="form-group">
                                                         <label htmlFor="backgroundColor">Background Color:</label>
-                                                        <input type="color" className="form-control" name="backgroundColor" ref={node => {
+                                                        <input type="color" className="form-control"onChange={this.handleBackGroundColorChange}  name="backgroundColor" ref={node => {
                                                             backgroundColor = node;
                                                         }} placeholder="Background Color" defaultValue={data.logo.backgroundColor} />
                                                     </div>
@@ -164,12 +211,14 @@ class EditLogoScreen extends Component {
                                                 {loading && <p>Loading...</p>}
                                                 {error && <p>Error :( Please try again</p>}
                                             </div>
-                                            <div className="col s8" style= {{overflow: "auto"}}>
+                                            <div className="col s8" style= {{overflow: "auto", minWidth:"maxContent"}}>
                                                 <div style={styles.container}>
                                                         
                                                         {data.logo.text.trim()}
+                                                </div>
+    
                                             </div>
-                                            </div>
+                                           
                                         </div> 
                                         
                                     </div>

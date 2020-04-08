@@ -66,9 +66,13 @@ class CreateLogoScreen extends Component {
                                 <div className="panel-body">
                                     <form onSubmit={e => {
                                         e.preventDefault();
-                                        addLogo({ variables: { text: text.value, color: color.value,  fontSize: parseInt(fontSize.value), 
-                                            backgroundColor: backgroundColor.value, borderColor: borderColor.value,borderRadius: parseInt(borderRadius.value),
-                                            borderThickness: parseInt(borderThickness.value),padding: parseInt(padding.value),margin: parseInt(margin.value)} });
+                                        if(text.value.trim().length!=0){
+                                            e.preventDefault();
+                                            addLogo({ variables: { text: text.value, color: color.value,  fontSize: parseInt(fontSize.value), 
+                                                backgroundColor: backgroundColor.value, borderColor: borderColor.value,borderRadius: parseInt(borderRadius.value),
+                                                borderThickness: parseInt(borderThickness.value),padding: parseInt(padding.value),margin: parseInt(margin.value)} });
+                                        }
+                                        
                                         text.value = "";
                                         color.value = "";
                                         fontSize.value = "";
@@ -144,7 +148,9 @@ class CreateLogoScreen extends Component {
                                         <pre>{text.trim()}</pre>  
                                     </div>
                                 </div> */}
+                                
                             </div>
+                            
                         </div>
                     </div>
                 )}

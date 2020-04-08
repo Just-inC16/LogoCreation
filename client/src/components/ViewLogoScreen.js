@@ -106,7 +106,7 @@ class ViewLogoScreen extends Component {
                                         </Mutation>
                                     </div>
                                     <div className="col s8" style= {{overflow: "auto"}}>
-                                                <div style={styles.container}>
+                                                <div id= "space_between" style={styles.container}>
                                                         
                                                     {data.logo.text.trim()}
                                             </div>
