@@ -51,44 +51,7 @@ const UPDATE_LOGO = gql`
 `;
 
 class EditLogoScreen extends Component {
-    // constructor() {
-    //     this.state = {
-    //         text: data.logo.text,
-    //         defaultText:data.logo.text,
-    //         textColor : data.logo.textColor,
-    //         fontSize : data.logo.fontSize,
-    //         backgroundColor: data.logo.backgroundColor,
-    //         boderStyle:"solid",
-    //         borderColor:data.logo.borderColor,
-    //         borderRadius: data.logo.borderRadius,
-    //         borderThickness: data.logo.borderThickness,
-    //         padding: data.logo.padding,
-    //         margin:data.logo.margin,
-    //     }
-    // }
-     //Background Color
-     handleBackGroundColorChange = (event) => {
-        console.log("handleBackGroundColorChange to " + event.target.value);
-        this.setState({ backgroundColor: event.target.value });
-    }
-    // componentDidUpdate=(prevProps)=>{
-    //     if(this.props.logo!==prevProps.logo){
-    //         this.setState({
-    //             text: this.props.logo.text,
-    //             defaultText:this.props.logo.text,
-    //             textColor : this.props.logo.textColor,
-    //             fontSize : this.props.logo.fontSize,
-    //             backgroundColor: this.props.logo.backgroundColor,
-    //             boderStyle:"solid",
-    //             borderColor:this.props.logo.borderColor,
-    //             borderRadius: this.props.logo.borderRadius,
-    //             borderThickness: this.props.logo.borderThickness,
-    //             padding: this.props.logo.padding,
-    //             margin:this.props.logo.margin,
 
-    //         });
-    //     }
-    // }
     render() {
         let text, color, fontSize,backgroundColor, borderColor,borderRadius,borderThickness,padding,margin;
         return (
@@ -116,7 +79,7 @@ class EditLogoScreen extends Component {
                     }
                     return (
                         <Mutation mutation={UPDATE_LOGO} key={data.logo._id} onCompleted={() => this.props.history.push(`/`)}>
-                            {(updateLogo, { loading, error, charDisplay }) => (
+                            {(updateLogo, { loading, error }) => (
                                 <div className="container">
                                     <div className="panel panel-default">
                                         <div className="panel-heading">
@@ -124,41 +87,34 @@ class EditLogoScreen extends Component {
                                             <h3 className="panel-title">
                                                 Edit Logo
                                             </h3>
-                                        </div> 
+                                        </div>
                                         <div id ="align_view_logo" className="panel-heading, row">
                                             <div className="panel-body">                                            
                                                 <form onSubmit={e => {
                                                     e.preventDefault();
-                                                    if(text.value.trim().length===0){
-                                                        console.log("Execute charDisplay");
-                                                        
-                                                    }
-                                                        
-                                                    else{
-                                                        updateLogo({ variables: { id: data.logo._id, text: text.value, color: color.value, fontSize: parseInt(fontSize.value), backgroundColor: backgroundColor.value,
-                                                                borderColor: borderColor.value,borderRadius: parseInt(borderRadius.value),borderThickness: parseInt(borderThickness.value),padding: parseInt(padding.value),
-                                                                margin: parseInt(margin.value) } });
-                                                    text.value = "";
-                                                    color.value = "";
-                                                    fontSize.value = "";
-                                                    backgroundColor.value="";
-                                                    borderColor.value="";
-                                                    borderRadius.value="";
-                                                    borderThickness.value="";
-                                                    padding.value="";
-                                                    margin.value="";}
+                                                    updateLogo({ variables: { id: data.logo._id, text: text.value, color: color.value, fontSize: parseInt(fontSize.value), backgroundColor: backgroundColor.value,
+                                                        borderColor: borderColor.value,borderRadius: parseInt(borderRadius.value),borderThickness: parseInt(borderThickness.value),padding: parseInt(padding.value),
+                                                        margin: parseInt(margin.value) } });
+                                                        text.value = "";
+                                                        color.value = "";
+                                                        fontSize.value = "";
+                                                        backgroundColor.value="";
+                                                        borderColor.value="";
+                                                        borderRadius.value="";
+                                                        borderThickness.value="";
+                                                        padding.value="";
+                                                        margin.value="";
                                                 }}>
-
-                                            
                                                     <div className="form-group">
                                                         <label htmlFor="text">Text:</label>
-                                                        <input type="text"  required="required" className="form-control"  name="text" ref={node => {
+                                                        <input type="text" className="form-control" name="text" ref={node => {
                                                             text = node;
                                                         }} placeholder="Text" defaultValue={data.logo.text} />
                                                     </div>
+                                                
                                                     <div className="form-group">
                                                         <label htmlFor="fontSize">Font Size:</label>
-                                                        <input type="number"min= "0" max= "144" className="form-control" name="fontSize" ref={node => {
+                                                        <input type="number" min= "2" max= "144" className="form-control" name="fontSize" ref={node => {
                                                             fontSize = node;
                                                         }} placeholder="Font Size" defaultValue={data.logo.fontSize} />
                                                     </div>
@@ -168,45 +124,44 @@ class EditLogoScreen extends Component {
                                                             color = node;
                                                         }} placeholder="Color" defaultValue={data.logo.color} />
                                                     </div>
-                                                    
                                                     <div className="form-group">
-                                                        <label htmlFor="backgroundColor">Background Color:</label>
-                                                        <input type="color" className="form-control"onChange={this.handleBackGroundColorChange}  name="backgroundColor" ref={node => {
-                                                            backgroundColor = node;
-                                                        }} placeholder="Background Color" defaultValue={data.logo.backgroundColor} />
-                                                    </div>
-                                                    <div className="form-group">
-                                                        <label htmlFor="borderColor">Border Color:</label>
-                                                        <input type="color" className="form-control" name="borderColor" ref={node => {
-                                                            borderColor = node;
-                                                        }} placeholder="Border Color"  defaultValue={data.logo.borderColor}/>
-                                                    </div>
-                                                    <div className="form-group">
-                                                        <label htmlFor="borderRadius">Border Radius:</label>
-                                                        <input type="number"min= "0" max= "144" className="form-control" name="borderRadius" ref={node => {
-                                                            borderRadius = node;
-                                                        }} placeholder="Border Radius" defaultValue={data.logo.borderRadius} />
-                                                    </div>
-                                                    
-                                                    <div className="form-group">
-                                                        <label htmlFor="borderThickness">Border Thickness:</label>
-                                                        <input type="number"min= "0" max= "144" className="form-control" name="borderThickness" ref={node => {
-                                                            borderThickness = node;
-                                                        }} placeholder="Border Thickness" defaultValue={data.logo.borderThickness}/>
-                                                    </div>
-                                                    <div className="form-group">
-                                                        <label htmlFor="padding">Padding:</label>
-                                                        <input type="number" min= "0" max= "144"className="form-control" name="padding" ref={node => {
-                                                            padding = node;
-                                                        }} placeholder="Padding" defaultValue={data.logo.padding}/>
-                                                    </div>
-                                                    <div className="form-group">
-                                                        <label htmlFor="margin">Margin:</label>
-                                                        <input type="number"min= "0" max= "144" className="form-control" name="margin" ref={node => {
-                                                            margin = node;
-                                                        }} placeholder="Margin" defaultValue={data.logo.margin}/>
-                                                    </div> 
-                                                    <button type="submit" className="btn btn-success">Submit</button>
+                                                            <label htmlFor="backgroundColor">Background Color:</label>
+                                                            <input type="color" className="form-control"onChange={this.handleBackGroundColorChange}  name="backgroundColor" ref={node => {
+                                                                backgroundColor = node;
+                                                            }} placeholder="Background Color" defaultValue={data.logo.backgroundColor} />
+                                                        </div>
+                                                        <div className="form-group">
+                                                            <label htmlFor="borderColor">Border Color:</label>
+                                                            <input type="color" className="form-control" name="borderColor" ref={node => {
+                                                                borderColor = node;
+                                                            }} placeholder="Border Color"  defaultValue={data.logo.borderColor}/>
+                                                        </div>
+                                                        <div className="form-group">
+                                                            <label htmlFor="borderRadius">Border Radius:</label>
+                                                            <input type="number"min= "0" max= "144" className="form-control" name="borderRadius" ref={node => {
+                                                                borderRadius = node;
+                                                            }} placeholder="Border Radius" defaultValue={data.logo.borderRadius} />
+                                                        </div>
+                                                        
+                                                        <div className="form-group">
+                                                            <label htmlFor="borderThickness">Border Thickness:</label>
+                                                            <input type="number"min= "0" max= "144" className="form-control" name="borderThickness" ref={node => {
+                                                                borderThickness = node;
+                                                            }} placeholder="Border Thickness" defaultValue={data.logo.borderThickness}/>
+                                                        </div>
+                                                        <div className="form-group">
+                                                            <label htmlFor="padding">Padding:</label>
+                                                            <input type="number" min= "0" max= "144"className="form-control" name="padding" ref={node => {
+                                                                padding = node;
+                                                            }} placeholder="Padding" defaultValue={data.logo.padding}/>
+                                                        </div>
+                                                        <div className="form-group">
+                                                            <label htmlFor="margin">Margin:</label>
+                                                            <input type="number"min= "0" max= "144" className="form-control" name="margin" ref={node => {
+                                                                margin = node;
+                                                            }} placeholder="Margin" defaultValue={data.logo.margin}/>
+                                                        </div> 
+                                                        <button type="submit" className="btn btn-success">Submit</button>
                                                 </form>
                                                 {loading && <p>Loading...</p>}
                                                 {error && <p>Error :( Please try again</p>}
@@ -216,11 +171,9 @@ class EditLogoScreen extends Component {
                                                         
                                                         {data.logo.text.trim()}
                                                 </div>
-    
+        
                                             </div>
-                                           
-                                        </div> 
-                                        
+                                        </div>
                                     </div>
                                 </div>
                             )}
