@@ -54,7 +54,7 @@ class EditLogoScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            text: null,
+            text: "",
             color: null,
             fontSize: null,
             backgroundColor: null,
@@ -150,7 +150,7 @@ class EditLogoScreen extends Component {
                    
                     if (loading) return 'Loading...';
                     if (error) return `Error! ${error.message}`;
-                    if(this.state.text ==null&& this.state.color ==null &&this.state.fontSize ==null&&
+                    if(this.state.text ==""&& this.state.color ==null &&this.state.fontSize ==null&&
                         this.state.backgroundColor ==null&&this.state.borderColor ==null&&this.state.borderRadius ==null&&
                         this.state.borderThickness ==null&&this.state.padding ==null&&this.state.margin ==null)
                     {
@@ -283,9 +283,9 @@ class EditLogoScreen extends Component {
                                                 {error && <p>Error :( Please try again</p>}
                                             </div>
                                             <div className="col s8" style= {{overflow: "auto"}}>
-                                                <div style={styles.container}>
-                                                        
-                                                        {data.logo.text.trim()}
+                                                <div style={styles.container}>  
+                                                        {this.state.text.trim()}
+                                                       
                                                 </div>
     
                                             </div>

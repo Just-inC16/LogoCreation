@@ -32,27 +32,45 @@ const ADD_LOGO = gql`
 `;
 
 class CreateLogoScreen extends Component {
-
+    constructor(props) {
+        super(props);
+        this.state = {
+            text: "",
+            color: null,
+            fontSize: null,
+            backgroundColor: null,
+            borderColor: null,
+            borderRadius: null,
+            borderThickness: null,
+            padding: null,
+            margin: null,
+            isInvalidName: false
+        }
+    }
     render() {
         let text, color, fontSize,backgroundColor,borderColor,borderRadius,borderThickness,padding, margin;
         const styles = {
             container: {
                 borderStyle: "solid",
-                text: text,
-                color: color,
-                fontSize: fontSize + "pt",
-                backgroundColor:backgroundColor,
-                borderColor:borderColor,
-                borderRadius :borderRadius+"pt",
-                borderWidth:borderThickness+"pt",
-                padding:padding+"pt",
-                margin:margin+"pt",
-                position:"absolute"
+                text: this.state.text,
+                color: this.state.color,
+                fontSize: this.state.fontSize + "pt",
+                backgroundColor:this.state.backgroundColor,
+                borderColor:this.state.borderColor,
+                borderRadius :this.state.borderRadius+"pt",
+                borderWidth:this.state.borderThickness+"pt",
+                padding:this.state.padding+"pt",
+                margin:this.state.margin+"pt",
+                whiteSpace: "pre-wrap",
+                maxWidth: "100%",
+                minWidth: "min-content",
+                textAlign: "center"
             }
         }
         return (
             <Mutation mutation={ADD_LOGO} onCompleted={() => this.props.history.push('/')}>
                 {(addLogo, { loading, error }) => (
+                    
                     <div className="container">
                         <div className="panel panel-default">
                             <div className="panel-heading">
@@ -143,11 +161,11 @@ class CreateLogoScreen extends Component {
                                     {loading && <p>Loading...</p>}
                                     {error && <p>Error :( Please try again</p>}
                                 </div>
-                                {/* <div className="col s8" style= {{overflow: "auto"}}>
+                                <div className="col s8" style= {{overflow: "auto"}}>
                                     <div style={styles.container}>
-                                        <pre>{text.trim()}</pre>  
+                                            {this.state.text.trim()}
                                     </div>
-                                </div> */}
+                                </div>
                                 
                             </div>
                             
