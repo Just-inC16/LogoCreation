@@ -37,15 +37,92 @@ class CreateLogoScreen extends Component {
         this.state = {
             text: "",
             color: null,
-            fontSize: null,
+            fontSize: 0,
             backgroundColor: null,
             borderColor: null,
-            borderRadius: null,
-            borderThickness: null,
-            padding: null,
-            margin: null,
+            borderRadius: 0,
+            borderThickness: 0,
+            padding: 0,
+            margin: 0,
             isInvalidName: false
+            
         }
+    }
+    handleTextChange = (event) => {
+        console.log("handleTextChange to " + event.target.value); 
+        this.setState({ text: event.target.value},function(){
+            console.log("The update text is " +this.state.text);
+            
+        });
+        if(event.target.value<=0){
+            console.log("The string entered is less than normal. ");
+            this.setState({isInvalidName:true});
+        }
+        else
+            this.setState({isInvalidName:false});
+    };
+    //Text Color
+    handleTextColorChange = (event) => {
+        console.log("handleTextColorChange to " + event.target.value);
+        this.setState({ color: event.target.value },function(){
+            console.log("The update text is " +this.state.color);
+            
+        });
+    }
+    //Font Size
+    handleFontSizeChange = (event) => {
+        console.log("handleSizeChangeComplete to " + event.target.value);
+        this.setState({ fontSize: event.target.value },function(){
+            console.log("The update text is " +this.state.fontSize);
+            
+        });
+    }
+    //Background Color
+    handleBackGroundColorChange = (event) => {
+        console.log("handleBackGroundColorChange to " + event.target.value);
+        this.setState({ backgroundColor: event.target.value },function(){
+            console.log("The update text is " +this.state.backgroundColor);
+            
+        });
+    }
+    //Border Color
+    handleBorderColorChange = (event) => {
+        console.log("handleBorderColorChange to " + event.target.value);
+        this.setState({ borderColor: event.target.value },function(){
+            console.log("The update text is " +this.state.borderColor);
+            
+        });
+    }
+    //Border Radius
+    handleBorderRadiusChange = (event) => {
+        console.log("handleBorderRadiusChangeComplete to " + event.target.value);
+        this.setState({ borderRadius: event.target.value },function(){
+            console.log("The update text is " +this.state.borderRadius);
+            
+        });
+    }
+    //Border Thickness
+    handleBorderThicknessChange = (event) => {
+        console.log("handleBorderThicknessChangeComplete to " + event.target.value);
+        this.setState({ borderThickness: event.target.value },function(){
+            console.log("The update text is " +this.state.borderThickness);
+            
+        });
+    }
+    //Padding
+    handlePaddingChange = (event) => {
+        console.log("handlePaddingChangeComplete to " + event.target.value);
+        this.setState({ padding: event.target.value },function(){
+            console.log("The update text is " +this.state.padding);
+            
+        });
+    }
+    //Margin
+    handleMarginChange = (event) => {
+        console.log("handleMarginChangeComplete to " + event.target.value);
+        this.setState({ margin: event.target.value },function(){
+            console.log("The update text is " +this.state.margin);
+        });
     }
     render() {
         let text, color, fontSize,backgroundColor,borderColor,borderRadius,borderThickness,padding, margin;
@@ -85,74 +162,85 @@ class CreateLogoScreen extends Component {
                                     <form onSubmit={e => {
                                         e.preventDefault();
                                         if(text.value.trim().length!=0){
-                                            e.preventDefault();
                                             addLogo({ variables: { text: text.value, color: color.value,  fontSize: parseInt(fontSize.value), 
                                                 backgroundColor: backgroundColor.value, borderColor: borderColor.value,borderRadius: parseInt(borderRadius.value),
                                                 borderThickness: parseInt(borderThickness.value),padding: parseInt(padding.value),margin: parseInt(margin.value)} });
                                         }
                                         
-                                        text.value = "";
-                                        color.value = "";
-                                        fontSize.value = "";
-                                        backgroundColor.value="";
-                                        borderColor.value="";
-                                        borderRadius.value="";
-                                        borderThickness.value="";
-                                        padding.value="";
-                                        margin.value="";
+                                        // text.value = "";
+                                        // color.value = "";
+                                        // fontSize.value = "";
+                                        // backgroundColor.value="";
+                                        // borderColor.value="";
+                                        // borderRadius.value="";
+                                        // borderThickness.value="";
+                                        // padding.value="";
+                                        // margin.value="";
 
+                                        // this.setState({
+                                        //     text: "", 
+                                        //     color:"",
+                                        //     fontSize:0,
+                                        //     backgroundColor:"",
+                                        //     borderColor:"",
+                                        //     borderRadius:0,
+                                        //     borderThickness:0,
+                                        //     padding:0,
+                                        //     margin:0,
+                                        // })
                                     }}>
                                         <div className="form-group">
                                             <label htmlFor="text">Text:</label>
-                                            <input type="text" className="form-control" name="text" ref={node => {
+                                            <input type="text" required="required" className="form-control"onChange={this.handleTextChange} name="text" ref={node => {
                                                 text = node;
                                             }} placeholder="Text" />
                                         </div>
+                                        {this.state.isInvalidName ? <span  className="red-text">**Logo text must be non-empty!**</span> : null}
                                         <div className="form-group">
                                             <label htmlFor="fontSize">Font Size:</label>
-                                            <input type="number"min= "0" max= "144" className="form-control" name="fontSize" ref={node => {
+                                            <input type="number"min= "0" max= "144" className="form-control"onChange={this.handleFontSizeChange} name="fontSize" ref={node => {
                                                 fontSize = node;
                                             }} placeholder="Font Size" />
                                         </div>
                                         <div className="form-group">
                                             <label htmlFor="color"> Text Color:</label>
-                                            <input type="color" className="form-control" name="color" ref={node => {
+                                            <input type="color" className="form-control" name="color" onChange={this.handleTextColorChange}ref={node => {
                                                 color = node;
                                             }} placeholder="Color" />
                                         </div>
                                         <div className="form-group">
                                             <label htmlFor="backgroundColor">Background Color:</label>
-                                            <input type="color" className="form-control" name="backgroundColor" ref={node => {
+                                            <input type="color" className="form-control" name="backgroundColor"onChange={this.handleBackGroundColorChange} ref={node => {
                                                 backgroundColor = node;
                                             }} placeholder="Background Color" />
                                         </div>
                                         <div className="form-group">
                                             <label htmlFor="borderColor">Border Color:</label>
-                                            <input type="color" className="form-control" name="borderColor" ref={node => {
+                                            <input type="color" className="form-control" name="borderColor" onChange={this.handleBorderColorChange}ref={node => {
                                                 borderColor = node;
                                             }} placeholder="Border Color" />
                                         </div>
                                         <div className="form-group">
                                             <label htmlFor="borderRadius">Border Radius:</label>
-                                            <input type="number" min= "0" max= "144"className="form-control" name="borderRadius" ref={node => {
+                                            <input type="number" min= "0" max= "144"className="form-control"onChange={this.handleBorderRadiusChange} name="borderRadius" ref={node => {
                                                 borderRadius = node;
                                             }} placeholder="Border Radius" />
                                         </div>
                                         <div className="form-group">
                                             <label htmlFor="borderThickness">Border Thickness:</label>
-                                            <input type="number"min= "0" max= "144" className="form-control" name="borderThickness" ref={node => {
+                                            <input type="number"min= "0" max= "144" className="form-control" onChange={this.handleBorderThicknessChange} name="borderThickness" ref={node => {
                                                 borderThickness = node;
                                             }} placeholder="Border Thickness" />
                                         </div>
                                         <div className="form-group">
                                             <label htmlFor="padding">Padding:</label>
-                                            <input type="number"min= "0" max= "144" className="form-control" name="padding" ref={node => {
+                                            <input type="number"min= "0" max= "144" className="form-control" onChange={this.handlePaddingChange}name="padding" ref={node => {
                                                 padding = node;
                                             }} placeholder="Padding" />
                                         </div>
                                         <div className="form-group">
                                             <label htmlFor="margin">Margin:</label>
-                                            <input type="number" min= "0" max= "144"className="form-control" name="margin" ref={node => {
+                                            <input type="number" min= "0" max= "144"className="form-control" onChange={this.handleMarginChange}name="margin" ref={node => {
                                                 margin = node;
                                             }} placeholder="Margin" />
                                         </div>
