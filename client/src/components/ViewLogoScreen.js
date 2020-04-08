@@ -40,7 +40,7 @@ class ViewLogoScreen extends Component {
                     if (error) return `Error! ${error.message}`;
                     const styles = {
                         container: {
-                            position:"absolute",
+                            
                             borderStyle: "solid",
                             text: data.logo.text,
                             color: data.logo.color,
@@ -51,7 +51,10 @@ class ViewLogoScreen extends Component {
                             borderWidth:data.logo.borderThickness+"pt",
                             padding:data.logo.padding+"pt",
                             margin:data.logo.margin+"pt",
-                            
+                            whiteSpace: "pre-wrap",
+                            maxWidth: "100%",
+                            minWidth: "min-content",
+                            textAlign: "center"
                         }
                     }
                     return (
@@ -106,7 +109,7 @@ class ViewLogoScreen extends Component {
                                         </Mutation>
                                     </div>
                                     <div className="col s8" style= {{overflow: "auto"}}>
-                                                <div id= "space_between" style={styles.container}>
+                                                <div style={styles.container}>
                                                         
                                                     {data.logo.text.trim()}
                                             </div>
