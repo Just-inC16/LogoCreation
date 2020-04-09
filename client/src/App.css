@@ -23,8 +23,9 @@ home_logo_link {
 }
 
 #home_banner_container {
-  background-image: linear-gradient(to bottom,         
-  #b8b808, #636723);
+  /* background-image: linear-gradient(to bottom,         
+  #1f22e4ab, #84857c); */
+  background-color: #1b95e0;
   color: white;
   font-size: 48pt;
   border-color: black;
@@ -39,20 +40,27 @@ home_logo_link {
 #add_logo_button{
   font-family: 'Lexend Exa';
   font-size: 32pt;
+ 
 }
 #center_home_screen{
   background-color: var(--swatch-primary);
   display: grid;
   grid-column-gap: 15px;
   grid-row-gap: 15px;
-  padding: 5px 10px 5px 10px;
+  padding: 5px 10px 5px 10px; 
+  border-color: black;
+  background-image: linear-gradient(to bottom,         
+  #1fbde4, #84857c);
 }
 #recent_work_header{
   font-size: 24pt;
   font-weight: bold;
+  color: white;
 }
 
 #home_recent_work_container{
+  background-image: linear-gradient(to bottom,         
+  #1fbde4, #84857c);
   grid-column: 1 / span 1;
   grid-row: 1 / span 2;
 }
@@ -64,11 +72,29 @@ home_logo_link {
   top: 5%;
 }
 
-#align_view_logo{
+#align_view_edit_logo{
   margin-left: 0px;
+  width: 197px;
+}
+#align_create_logo{
+  margin-left: 0px;
+  width: 100%;
 }
 #logo_outer_part{
   max-width: min-content;
   min-width: min-content;
   text-align: center;
+}
+#nav_home_button{
+  background-color: #add8e6;
+  position: relative;
+  height: 74px;
+  padding-top: 20px;
+  cursor: "pointer";
+  font-size:30px
+}
+
+#logo_props{
+  padding: 5px;
+  background-color: white;
 }
