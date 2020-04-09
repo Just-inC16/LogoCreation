@@ -32,6 +32,7 @@
 }
 
 ## ADD LOGO
+### Logo #1
 mutation {
   addLogo (
     text: "Facebook",
@@ -47,6 +48,7 @@ mutation {
     lastUpdate
   }
 }
+### Logo #2
 mutation {
   addLogo (
     text: "Amazon",
@@ -62,6 +64,7 @@ mutation {
     lastUpdate
   }
 }
+### Logo #3
 mutation {
   addLogo (
     text: "Google",
@@ -77,6 +80,7 @@ mutation {
     lastUpdate
   }
 }
+### Logo #4
 mutation {
   addLogo (
     text: "Boeing",
@@ -92,6 +96,7 @@ mutation {
     lastUpdate
   }
 }
+### Logo #5
 mutation {
   addLogo (
     text: "Delta Airlines",
@@ -108,6 +113,7 @@ mutation {
   }
 }
 ## UPDATE LOGO
+### Logo #1
 mutation {
   updateLogo (
     id: "5e8a98c44be3da58c8ddef94",
@@ -124,7 +130,7 @@ mutation {
     lastUpdate
   }
 }
-
+### Logo #2
 mutation {
   updateLogo (
     id: "5e8a995d4be3da58c8ddef95",
@@ -142,6 +148,7 @@ mutation {
   }
 }
 
+### Logo #3
 mutation {
   updateLogo (
     id: "5e8a9a344be3da58c8ddef96",
@@ -158,7 +165,7 @@ mutation {
     lastUpdate
   }
 }
-
+### Logo #4
 mutation {
   updateLogo (
     id: "5e8a9a7c4be3da58c8ddef97",
@@ -175,7 +182,7 @@ mutation {
     lastUpdate
   }
 }
-
+### Logo #5
 mutation {
   updateLogo (
     id: "5e8a9ade4be3da58c8ddef98",
@@ -194,33 +201,38 @@ mutation {
 }
 
 ## REMOVE LOGO
+### Logo #1
 mutation {
   removeLogo (id: "5e8a98c44be3da58c8ddef94") {
     _id
   }
 }
+### Logo #2
 mutation {
   removeLogo (id: "5e8a995d4be3da58c8ddef95") {
     _id
   }
 }
+### Logo #3
 mutation {
   removeLogo (id: "5e8a9a344be3da58c8ddef96") {
     _id
   }
 }
+### Logo #4
 mutation {
   removeLogo (id: "5e8a9a7c4be3da58c8ddef97") {
     _id
   }
 }
+### Logo #5
 mutation {
   removeLogo (text: "5e8a9ade4be3da58c8ddef98") {
     _id
   }
 }
 
-
+<br/>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
