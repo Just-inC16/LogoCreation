@@ -40,7 +40,7 @@ class HomeScreen extends Component {
                                         ))}
                                         
                                     </div>
-                                    <div className="col s8">
+                                    <div className="col s8"style={{position:"relative",maxWidth: "100%",minWidth: "min-content"}}>
                                         <div id="home_banner_container">
                                              GoLogoLo
                                         </div>
@@ -49,7 +49,7 @@ class HomeScreen extends Component {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                             </div>
                         </div>
                     );
                 }

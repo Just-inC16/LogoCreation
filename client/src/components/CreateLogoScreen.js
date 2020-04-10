@@ -161,11 +161,11 @@ class CreateLogoScreen extends Component {
                                     <h3 className="panel-title">
                                         Create Logo
                                     </h3>
-                                    <div id ="align_create_logo" className="row">
+                                    <div id ="align_view_edit_logo" className="row">
                                         <div className="panel-body">
                                             <form onSubmit={e => {
                                                 e.preventDefault();
-                                                if(text.value.trim().length!=0){
+                                                if(text.value.trim().length!==0){
                                                     addLogo({ variables: { text: text.value, color: color.value,  fontSize: parseInt(fontSize.value), 
                                                         backgroundColor: backgroundColor.value, borderColor: borderColor.value,borderRadius: parseInt(borderRadius.value),
                                                         borderThickness: parseInt(borderThickness.value),padding: parseInt(padding.value),margin: parseInt(margin.value)} });
@@ -199,10 +199,10 @@ class CreateLogoScreen extends Component {
                                                         text = node;
                                                     }} placeholder="Text" />
                                                 </div>
-                                                {this.state.isInvalidName ? <span  className="red-text">**Logo text must be non-empty!**</span> : null}
+                                                {this.state.isInvalidName ? <span  className="red-text">**Text must be non-empty!**</span> : null}
                                                 <div className="form-group">
                                                     <label htmlFor="fontSize">Font Size:</label>
-                                                    <input type="number"min= "0" max= "144" className="form-control"onChange={this.handleFontSizeChange} name="fontSize" ref={node => {
+                                                    <input type="number"min= "2" max= "144" className="form-control"onChange={this.handleFontSizeChange} name="fontSize" ref={node => {
                                                         fontSize = node;
                                                     }} placeholder="Font Size" />
                                                 </div>
@@ -238,13 +238,13 @@ class CreateLogoScreen extends Component {
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="padding">Padding:</label>
-                                                    <input type="number"min= "0" max= "144" className="form-control" onChange={this.handlePaddingChange}name="padding" ref={node => {
+                                                    <input type="number"min= "0" max= "144"  className="form-control" onChange={this.handlePaddingChange}name="padding" ref={node => {
                                                         padding = node;
                                                     }} placeholder="Padding" />
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="margin">Margin:</label>
-                                                    <input type="number" min= "0" max= "144"className="form-control" onChange={this.handleMarginChange}name="margin" ref={node => {
+                                                    <input type="number" min= "0" max= "144" className="form-control" onChange={this.handleMarginChange}name="margin" ref={node => {
                                                         margin = node;
                                                     }} placeholder="Margin" />
                                                 </div>

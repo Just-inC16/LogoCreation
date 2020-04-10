@@ -30,11 +30,13 @@ home_logo_link {
   font-size: 48pt;
   border-color: black;
   border-width: 2px;
+  max-width: 100%;
   border-style: solid;
   border-radius: 10px;
   padding-left: 10%;
   padding-top: 5%;
   padding-bottom: 5%;
+  
   
 }
 #add_logo_button{
@@ -74,7 +76,7 @@ home_logo_link {
 
 #align_view_edit_logo{
   margin-left: 0px;
-  width: 197px;
+  width: 210px;
 }
 #align_create_logo{
   margin-left: 0px;
@@ -97,4 +99,10 @@ home_logo_link {
 #logo_props{
   padding: 5px;
   background-color: white;
+}
+#logo_view_screen{
+  white-space: "pre-wrap";
+  /* max-width: "100%";
+  min-width: "min-content"; */
+  
 }

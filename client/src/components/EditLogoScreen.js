@@ -150,7 +150,7 @@ class EditLogoScreen extends Component {
                    
                     if (loading) return 'Loading...';
                     if (error) return `Error! ${error.message}`;
-                    if(this.state.text ==""&& this.state.color ==null &&this.state.fontSize ==null&&
+                    if(this.state.text ===""&& this.state.color ==null &&this.state.fontSize ==null&&
                         this.state.backgroundColor ==null&&this.state.borderColor ==null&&this.state.borderRadius ==null&&
                         this.state.borderThickness ==null&&this.state.padding ==null&&this.state.margin ==null)
                     {
@@ -204,20 +204,12 @@ class EditLogoScreen extends Component {
                                                     <div className="panel-body">                                            
                                                         <form onSubmit={e => {
                                                             e.preventDefault();
-                                                            if(text.value.trim().length!=0){
+                                                            if(text.value.trim().length!==0){
                                                                                                                         
                                                                 updateLogo({ variables: { id: data.logo._id, text: text.value, color: color.value, fontSize: parseInt(fontSize.value), backgroundColor: backgroundColor.value,
                                                                         borderColor: borderColor.value,borderRadius: parseInt(borderRadius.value),borderThickness: parseInt(borderThickness.value),padding: parseInt(padding.value),
                                                                         margin: parseInt(margin.value) } });
-                                                                text.value = "";
-                                                                color.value = "";
-                                                                fontSize.value = "";
-                                                                backgroundColor.value="";
-                                                                borderColor.value="";
-                                                                borderRadius.value="";
-                                                                borderThickness.value="";
-                                                                padding.value="";
-                                                                margin.value="";
+                                                                
                                                             }
                                                         }}>
 
@@ -228,7 +220,7 @@ class EditLogoScreen extends Component {
                                                                     text = node;
                                                                 }} placeholder="Text" defaultValue={data.logo.text} />
                                                             </div>
-                                                            {this.state.isInvalidName ? <span  className="red-text">**Logo text must be non-empty!**</span> : null}
+                                                            {this.state.isInvalidName ? <span  className="red-text">**Text must be non-empty!**</span> : null}
                                                             
                                                             <div className="form-group">
                                                                 <label htmlFor="fontSize">Font Size:</label>
@@ -237,7 +229,7 @@ class EditLogoScreen extends Component {
                                                                 }} placeholder="Font Size" defaultValue={data.logo.fontSize} />
                                                             </div>
                                                             <div className="form-group">
-                                                                <label htmlFor="color">Color:</label>
+                                                                <label htmlFor="color">Text Color:</label>
                                                                 <input type="color" className="form-control" onChange={this.handleTextColorChange}name="color" ref={node => {
                                                                     color = node;
                                                                 }} placeholder="Color" defaultValue={data.logo.color} />
@@ -270,7 +262,7 @@ class EditLogoScreen extends Component {
                                                             </div>
                                                             <div className="form-group">
                                                                 <label htmlFor="padding">Padding:</label>
-                                                                <input type="number" min= "0" max= "144"className="form-control" onChange={this.handlePaddingChange}name="padding" ref={node => {
+                                                                <input type="number" min= "0" max= "144" className="form-control" onChange={this.handlePaddingChange}name="padding" ref={node => {
                                                                     padding = node;
                                                                 }} placeholder="Padding" defaultValue={data.logo.padding}/>
                                                             </div>

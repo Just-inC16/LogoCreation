@@ -75,7 +75,7 @@ class ViewLogoScreen extends Component {
                                                 <div className="panel-body">
                                                     <dl>
                                                         <dt>Text:</dt>
-                                                        <dd><pre>{data.logo.text.trim()}</pre></dd> 
+                                                        <dd >{data.logo.text.trim()}</dd> 
                                                         <dt>Font Size:</dt>
                                                         <dd>{data.logo.fontSize}</dd>
                                                         <dt>Text Color:</dt>
